@@ -110,6 +110,7 @@ The base color was chosen from Materalize. Some different purple tones were also
 * Balsamiq - Wireframing design tool
 * Gimp - Efficient compression of images for site
 * QuickDBD - Draw your database relationship diagrams and flow quickly using simple DSL language
+* RandomKeygen - To generate a password for the Secret Key in env.py
 
 #### Code Validation
 
