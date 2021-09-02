@@ -1,1 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Oswald&display=swap');
+
+/*---Navbar*/
+
+.text-shadow {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
