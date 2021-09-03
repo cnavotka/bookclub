@@ -122,6 +122,14 @@ The base color was chosen from Materalize. Some different purple tones were also
 
 ### Testing
 
+### Bugs
+
+* Page doesn't run properly, the folowing message appeared:
+
+![Bug](https://github.com/cnavotka/bookclub/blob/main/static/images/bug-mistake-home-hmtl-1.png)
+
+Fixed the {% enblock %} and save it.
+
 ### Deployment
 
 #### Project creation
