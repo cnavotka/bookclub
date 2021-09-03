@@ -86,6 +86,25 @@ def login():
     return render_template("login.html")
 
 
+# Profile page
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # get the session user's username from database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    # get the session user's books from database
+    books = list(mongo.db.books.find())
+
+    # get random quote from database
+    quotes = mongo.db.quotes.aggregate([{"$sample": {"size": 1}}])
+
+    if session["user"]:
+        return render_template(
+            "profile.html", username=username, books=books, quotes=quotes)
+
+    return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
