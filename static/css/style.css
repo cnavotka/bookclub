@@ -5,3 +5,22 @@
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
+
+/*---Footer*/
+
+footer {
+  position: absolute;
+  bottom: 0;
+  }
+
+.social-media li {
+list-style-type: none;
+display: inline;
+
+}
+
+.social-media i {
+  font-size: 1.8rem;
+  margin: 10px 5px;
+}
+
