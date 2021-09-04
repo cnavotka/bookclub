@@ -42,7 +42,7 @@
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('best_books', username=session['user']) }}">Books</a></li>
-                <li><a href="{{ url_for('discover') }">Discover</a></li>
+                <li><a href="{{ url_for('discover') }}">Discover</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
