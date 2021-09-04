@@ -127,6 +127,13 @@ def add_book():
         return redirect("/profile/<username>")
 
 
+# View Book page
+@app.route("/view_book/<book_name>")
+def view_book(book_name):
+    book = mongo.db.books.find_one({"_id": ObjectId(book_name)})
+    return render_template("view_book.html", book=book)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
