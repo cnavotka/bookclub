@@ -135,6 +135,9 @@ I used Oswald and Azeret Mono from Google Fonts.
 
 ### Testing
 
+You can find the testing in this document:
+![Testing](https://github.com/cnavotka/bookclub/blob/main/static/test.md)
+
 ### Bugs
 
 * Page doesn't run properly, the folowing message appeared:
