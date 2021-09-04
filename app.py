@@ -158,6 +158,22 @@ def delete_book(book_id):
     return redirect("/profile/<username>")
 
 
+# Render Books page
+@app.route("/best_books/<username>", methods=["GET", "POST"])
+def best_books(username):
+    # get the session user's username from database
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    # get the session user's books from database
+    book_lists = list(mongo.db.book_lists.find({'created_by': username}))
+
+    if session["user"]:
+        return render_template(
+            "best_books.html", username=username, book_lists=book_lists)
+
+    return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
