@@ -231,6 +231,36 @@ def delete_list(list_id):
     return redirect("/best_books/<username>")
 
 
+# Add a new book into the database and into a list of books
+@app.route("/add_book_in_list/<list_name>", methods=["GET", "POST"])
+def add_book_in_list(list_name):
+    if request.method == "POST":
+        book = {
+            "book_name": request.form.get("book_name"),
+            "book_writer": request.form.get("book_writer"),
+            "img_url": request.form.get("img_url"),
+            "vendor_url": request.form.getlist("vendor_url"),
+            "created_by": session["user"]
+        }
+
+        # Insert ObjectID from a book into a determined book list
+        book_id = mongo.db.books_in_list.insert_one(book).inserted_id
+        mongo.db.book_lists.update(
+            {'_id': ObjectId(list_name)}, {'$push': {'books': book_id}})
+
+        book_list = mongo.db.book_lists.find_one({"_id": ObjectId(list_name)})
+
+    return redirect(url_for("view_list", list_name=book_list["_id"]))
+
+
+# Render Book Info page
+@app.route("/book_info/<list_name>/<book_name>")
+def book_info(list_name, book_name):
+    # book_lists = list(mongo.db.book_lists.find()) CHECK IF WILL BE USED
+    book = mongo.db.books_in_list.find_one({"_id": ObjectId(book_name)})
+    book_list = mongo.db.book_lists.find_one({"_id": ObjectId(list_name)})
+    return render_template("book_info.html", book=book, list=book_list)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
