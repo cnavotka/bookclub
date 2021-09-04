@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- Code of most of the file from https://github.com/Henriqueperoni/CI-MS3-Books-World-->
+    <!-- Modal - Add List -->
+    <div id="modal-review" class="container-modal row">
+        <div class="modal-books white col s10 offset-s1 m8 offset-m2 xl4 offset-xl4">
+            <div class="container-form col s12">
+                <form class="row" method="POST" action="{{ url_for('add_list') }}">
+        
+                    <!-- List Name-->
+                    <div class="input-field col s12">
+                        <label for="list_name">List Name:</label>
+                        <input id="list_name" name="list_name" type="text" class="validate" minlength="3" maxlength="50" required>
+                    </div>
+                    
+                    <!-- Share List or Not -->
+                    <div class="row">
+                        <div class="switch col s12">
+                            <label class="valign-wrapper" for="share_list">
+                                <input type="checkbox" id="share_list" name="share_list">
+                                <span class="lever"></span>
+                                Share <i class="fas fa-question-circle tooltipped" data-position="bottom" data-tooltip="By choosing to share other users will see your list on the discover page"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="row">
+                        <button type="submit" class="btn-sign-up white-text teal">Save  <i class="fas fa-save white-text"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- Close Modal -->
+            <button class="close-modal">x</button>
+        </div>
+    </div>
+        
+	<div class="general-container row">
+        <div class="container-logos">
+            <a href="{{ url_for('home') }}"><h3 class="teal-text logo">Book<span class="teal-text">Club</span></h3></a>
+        </div>
+
+        <button id="add-book"><i class="fas fa-plus-circle teal-text"></i></button>
+
+        <!-- List of books -->
+        <div class="container-book-lists row">
+            
+            {% if book_lists|length > 0 %}
+            <ul class="col s12 m10 offset-m1 l8 offset-l2">
+                {% for list in book_lists %}
+                    <li>
+                        <div class="list-title white-text teal lighten-1">
+                            <div>
+                                <i class="valign-wrapper fas fa-angle-right"></i>
+                                <a class="white-text" href="{{ url_for('view_list', list_name=list._id) }}"><h2 class="list-names">{{ list.list_name }}</h2></a>
+                            </div>
+                            <a class="btn-small white teal-text" href="{{ url_for('view_list', list_name=list._id) }}">See books</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <!-- Message welcoming new users -->
+                <div class="welcome-user">
+                    <h2>Hello, {{ username.capitalize() }}</h2>
+                    <p>Here you can create any list of books you want read, buy or you think more people should read:</p>
+                
+                    <p>Click in the add button on the right top corner and create your first list</p>
+                </div>
+            {% endif %}
+        </div>
+	</div>
+{% endblock %}
