@@ -208,6 +208,30 @@ def view_list(list_name):
         book_list=book_objects_list, list=book_list, username=username)
 
 
+# Edit booklist
+@app.route("/edit_list/<list_id>", methods=["GET", "POST"])
+def edit_list(list_id):
+    if request.method == "POST":
+
+        # Only uptade list_name and share_list fields in the book lists
+        mongo.db.book_lists.update_one(
+            {"_id": ObjectId(
+                list_id)}, {"$set": {"list_name": request.form.get(
+                    "list_name"), "share_list": request.form.get(
+                        "share_list")}})
+
+    list = mongo.db.book_lists.find_one({"_id": ObjectId(list_id)})
+    return redirect(url_for("view_list", list=list, list_name=list["_id"]))
+
+
+# Delete booklist
+@app.route("/delete_list/<list_id>")
+def delete_list(list_id):
+    mongo.db.book_lists.remove({"_id": ObjectId(list_id)})
+    return redirect("/best_books/<username>")
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
