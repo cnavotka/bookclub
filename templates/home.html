@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3>Home</h3>
-        {% for book in books %}
-            {{ book.book_name}}<br>
-            {{ book.writer_name}}<br>
-            {{ book.image_url}}<br>
-            {{ book.book_review}}<br>
-        {% endfor %}
+    <!-- Intro -->
+    <div class="intro-text teal-text">
+	    <h2>The virtual meeting place for book lovers</h2>
+        <p>
+            <span>Book <span class="teal-text">Club</span></span> Virtual book clubs are flourishing as they adapt to our increasingly rich online lives.  We host interactive author talks, online meetings, chat groups, and ongoing discussions over books.
+        </p>
+        {% if not user %}
+            <a class="sign-up teal-text" href="{{ url_for('sign_up') }}">Sign Up</a>
+        {% endif %}
+    </div>
 
 {% endblock %}
