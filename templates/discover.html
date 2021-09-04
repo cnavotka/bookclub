@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+  
+    <!-- Code of most of the file from https://github.com/Henriqueperoni/CI-MS3-Books-World-->
+	<div class="general-container row">
+        <div class="container-logos">
+            <a href="{{ url_for('home') }}"><h3 class="teal-text logo">Book<span class="teal-text">Club</span></h3></a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="row">
+            <div class="container-search col s12 m10 offset-m1 l6 offset-l6 xl5 offset-xl7">
+                <form action="{{ url_for('search') }}" method="post" >
+                    <input id="search" name="query" type="text" placeholder="Search:" required>
+                    <button type="submit">
+                        <i class="fas fa-search teal white-text"></i>
+                    </button>
+                    <a href="{{ url_for('discover') }}">
+                        <i class="fas fa-redo-alt teal white-text"></i>
+                    </a>
+                </form>
+            </div> 
+        </div>
+
+        <!-- List of books -->
+        <div class="container-discover row">
+            {% if book_lists|length > 0 %}
+            <ul class="col s12 m10 offset-m1 l8 offset-l2">
+                {% for list in book_lists %}
+                    {% if list.share_list == "on" %}
+                        <li>
+                            <div class="list-title white-text teal lighten-1">
+                                <div>
+                                    <i class="valign-wrapper fas fa-angle-right"></i>
+                                    <a class="white-text" href="{{ url_for('view_list', list_name=list._id) }}">
+                                        <h2 class="list-names">{{ list.list_name }}</h2>
+                                        <h3>by: {{ list.created_by.capitalize() }}</h3>
+                                    </a>
+                                </div>
+                                <a class="btn-small white teal-text" href="{{ url_for('view_list', list_name=list._id) }}">See books</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h4 class="center-align red-text col s12">No results found</h4>
+            {% endif %}
+        </div>
+	</div>
+{% endblock %}
