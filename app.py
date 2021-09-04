@@ -174,6 +174,40 @@ def best_books(username):
     return redirect(url_for("login"))
 
 
+# Add a new booklist into database
+@app.route("/add_list", methods=["GET", "POST"])
+def add_list():
+    if request.method == "POST":
+        share_list = "on" if request.form.get("share_list") else "off"
+        list = {
+            "list_name": request.form.get("list_name"),
+            "share_list": share_list,
+            "created_by": session["user"],
+            "books": []
+        }
+        mongo.db.book_lists.insert_one(list)
+        return redirect("/best_books/<username>")
+
+
+# Render View List Page
+@app.route("/view_list/<list_name>")
+def view_list(list_name):
+    # get book lists from datase
+    book_list = mongo.db.book_lists.find_one({"_id": ObjectId(list_name)})
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    # Append new book into a book list
+    book_objects_list = []
+    for book in book_list['books']:
+        book_item = mongo.db.books_in_list.find_one({'_id': ObjectId(book)})
+        book_objects_list.append(book_item)
+
+    return render_template(
+        "view_list.html",
+        book_list=book_objects_list, list=book_list, username=username)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
