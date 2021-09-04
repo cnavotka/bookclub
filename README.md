@@ -5,7 +5,9 @@ Aims to provide a place where members of a Bookclub can write a summary of a boo
 
 here you can check the live site:
 
-![Heroku](https://bookclub-manager.herokuapp.com/home)
+![Heroku](https://bookclub-manager.herokuapp.com/)
+
+![Responsive Image](https://github.com/cnavotka/bookclub/blob/main/static/images/responsive.png)
 
 ## Table of Contents
 
