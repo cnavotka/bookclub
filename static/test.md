@@ -78,6 +78,9 @@ Checked if by clicking in the list name the user is redirected to the same page 
 
 Tested the deployment in MacBook Pro, iPad and iPhone SE using Safari, Chrome and Firefox.
 
+Here you can find the screenshot with the results from the Lighthouse Performance:
+![Lighthouse](https://github.com/cnavotka/bookclub/blob/main/static/images/lighthouse.png)
+
 
 
 
