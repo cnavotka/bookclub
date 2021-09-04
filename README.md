@@ -41,6 +41,10 @@ As the website has two main ideas, create personal book summaries and lists of b
 #### Skeleton
 
 * Wireframes
+You can find them here:
+
+![Skeleton](https://github.com/cnavotka/bookclub/tree/main/static/documents)
+
 * Navigation bar - Menu with links pointing to each page
 1. Home - A short description letting the user knows what the website is about.
 2. Sign Up / Log In - Very similar design to keep consistency and be user friendly.
@@ -56,9 +60,12 @@ As the website has two main ideas, create personal book summaries and lists of b
 The overall UX is clean and similar in all pages to keep consistency.
 
 * Colours
-The base color was chosen from Materalize. Some different purple tones were also chosen to make the website more elegant. 
+The base color was chosen from Materalize. Some different teal were also chosen because that was the colour used in the library of my primary school. 
 
 * Typography
+
+I used Oswald and Azeret Mono from Google Fonts.
+
 * Images
 
 ### Features
