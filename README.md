@@ -55,6 +55,8 @@ You can find them here:
 
 * Database diagram
 
+![DBDiagram](https://github.com/cnavotka/bookclub/blob/main/static/images/QuickDBD-bookclubdb.png)
+
 
 #### Surface
 The overall UX is clean and similar in all pages to keep consistency.
