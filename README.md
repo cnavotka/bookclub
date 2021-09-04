@@ -130,6 +130,12 @@ The base color was chosen from Materalize. Some different purple tones were also
 
 Fixed the {% enblock %} and save it.
 
+* Page doesn't run properly, the following message appeared:
+
+![Bug2](https://github.com/cnavotka/bookclub/blob/main/static/images/bug-curly-braces-missing.png)
+
+Added the missing curly brace.
+
 ### Deployment
 
 #### Project creation
