@@ -1,27 +1,1110 @@
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Oswald&display=swap');
 
-/*---Navbar*/
-
-.text-shadow {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-/*---Footer*/
+body {
+  background: url("/static/images/books2.JPG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Azeret Mono", sans-serif;
+}
 
+/* Scroll Bar */
+::-webkit-scrollbar {
+	width: 0px;
+}
+
+/*----------------- BASE TEMPLATE -------------------*/
+/* Navbar */
+nav {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.logo-name {
+    position: absolute;
+    top: 0;
+    font-family: "Oswald", sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-left: 60px;
+}
+
+nav ul a:hover {
+    background: none;
+}
+
+.active {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    font-weight: 600;
+    color: #fafafa;
+}
+
+#mobile-demo {
+    background: rgb(185,175,202);
+    background: -o-radial-gradient(circle, rgba(185,175,202,1) 0%, #008080 100%);
+    background: radial-gradient(circle, rgba(185,175,202,1) 0%, #008080 100%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+}
+
+/* Footer */
 footer {
-  position: absolute;
-  bottom: 0;
-  }
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+}
 
-.social-media li {
-list-style-type: none;
-display: inline;
+.social-media {
+  list-style-type: none;
+  display: inline;
 
 }
 
 .social-media i {
-  font-size: 1.8rem;
-  margin: 10px 5px;
-  color: teal;
+    font-size: 1.8rem;
+    color: #008080;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    margin: 10px 5px;
 }
 
+
+/* HOME */
+.sign-up {
+    display: inline;
+    width: 100px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border: 1px solid #000000;
+    background: #ececec;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-right: 10px;
+    font-weight: 600;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.sign-up:hover {
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(256, 256, 256, .60);
+            box-shadow: 0px 0px 15px 0px rgba(256, 256, 256, .60);
+    background: #fff;
+}
+
+.intro-img {
+    position: absolute;
+    right: 4%;
+    bottom: 8%;
+    height: 400px;
+    width: 400px;
+    -o-object-fit: contain;
+       object-fit: contain;
+}
+
+.intro-text {
+    position:absolute;
+    left: 8%;
+    top: 18%;
+    width: 30%;
+    max-width: 390px;
+}
+
+.intro-text h2 {
+    font-size: 2rem;
+}
+
+.intro-text > p > span {
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+.intro-text a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 10px auto;
+}
+
+/*--------------- GENERAL CONTAINER -----------------*/
+.general-container {
+    height: 80%;
+    width: 80%;
+    background: -o-radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(209,209,209,1) 100%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(209,209,209,1) 100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 5px 30px 0px rgba(0,0,0,0.55);
+            box-shadow: 0px 5px 30px 0px rgba(0,0,0,0.55);
+    overflow-y: scroll;
+}
+
+.container-logos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.logo {
+    font-family: "Nunito", sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin: 0 0 0 5px;
+}
+
+/*--------------- SIGN UP / LOGIN -----------------*/
+.container-ilustration,
+.container-login {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%)
+}
+
+.container-ilustration img {
+    width: 80%;
+    height: auto;
+}
+
+.container-sign h2 {
+    color: white;
+}
+
+.btn-sign-up {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    width: 150px;
+    height: 42px;
+    margin-bottom: 5px !important;
+    border-radius: 20px;
+    border: none;
+    margin: 0 auto;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    cursor: pointer;
+}
+
+.btn-sign-up:hover,
+.btn-back:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.30);
+            box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.30);
+}
+
+.account {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+            transform: translate(-50%);
+    text-align: center;
+    min-width: 130px;
+}
+
+.account a {
+    color: #e44646;
+}
+
+.account a:hover {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    cursor: pointer;
+}
+
+/*----------------- PROFILE -------------------*/
+#profile-user {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-top: -5px;
+}
+
+.books,
+.book-heading {
+    margin: 80px 40px 0 40px;
+}
+
+.books,
+.container-book-lists {
+    height: 80%;
+    overflow: scroll;
+}
+
+.book {
+    height: 250px;
+}
+
+.book img {
+    height: 180px;
+    width: 130px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.book img:active {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+}
+
+.title p {
+    max-width: 130px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin: 0 auto
+}
+
+.title p:first-child {
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+.quotes {
+    position: absolute; 
+    right: 5px; 
+    bottom: 10px; 
+    font-size: .9rem; 
+    font-style: italic;
+    display: none;
+}
+
+/*----------------- VIEW BOOK -------------------*/
+.book-heading img {
+    height: 375px;
+    width: 250px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+}
+
+.book-heading h1 {
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+}
+
+.book-heading h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -1px;
+    margin: 0 0 10px 0;
+}
+
+.book-heading p {
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+.edit-buttons,
+.delete-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 10px;
+}
+
+.edit-buttons a,
+.delete-buttons a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.edit-buttons a {
+    width: 110px;
+    height: 50px;
+}
+
+.edit-buttons i,
+.delete-buttons i {
+    margin-left: 5px;
+}
+
+.edit-buttons a:hover,
+.delete-buttons a:hover {
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.30);
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.30);
+}
+
+.edit-buttons a:active,
+.delete-buttons a:active,
+.sign-up:active,
+.btn-back:active,
+.list-title a:active,
+.buy-btn:active {
+    -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+            transform: scale(0.9);
+}
+
+/*----------------- BEST BOOKS -------------------*/
+.list-title {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-height: 70px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.list-title > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+.list-title i {
+    margin: 0 20px;
+}
+
+.list-title a,
+.buy-btn {
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 105px;
+    margin-right: 20px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.list-names {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
+    position: relative;
+}
+
+.container-book-lists {
+    margin: 80px 5px 0 5px;
+}
+
+.container-book-lists ul,
+.container-discover ul {
+    padding: 0 !important;
+}
+
+.switch {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.switch i {
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+.welcome-user {
+    text-align: center;
+    padding: 5px;
+}
+
+.welcome-user ul {
+    display: inline-block;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.welcome-user li {
+    list-style-type: circle !important;
+}
+
+/*----------------- VIEW LIST -------------------*/
+.container-book-lists h1 {
+    font-size: 3rem;
+    font-family: 'Nunito';
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin: 0 0 20px 0;
+}
+
+.container-book-lists h3 {
+    font-size: 1rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.books-list img {
+    height: 305px;
+    width: 220px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+}
+
+.book-title p {
+    max-width: 220px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0 auto;
+    text-align: start;
+}
+
+.book-title p:first-child {
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.book-title {
+    margin-bottom: 15px;
+}
+
+.book-cover {
+    min-height: 375px !important;
+}
+
+.modal-books form {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/*----------------- DISCOVER -------------------*/
+.container-discover {
+    margin: 0 5px;
+    padding: 0;
+    height: calc(100% - 145px);
+    overflow: scroll;
+}
+
+.list-title h3 {
+    font-size: 0.8rem;
+    margin: 0 20px 0 0;
+    font-style: italic;
+} 
+
+.container-search {
+    margin-top: 80px;
+}
+
+.container-search form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: #fff;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 15px;
+    -webkit-box-shadow: 2px 5px 20px -5px rgba(0,0,0,0.25);
+            box-shadow: 2px 5px 20px -5px rgba(0,0,0,0.25);
+}
+
+.container-search i {
+    height: 35px;
+    width: 50px;
+    border-radius: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.container-search button {
+    margin: 5px;
+    border: none;
+    background: transparent;
+}
+
+.container-search a {
+    margin-right: 15px;
+}
+
+.container-search i:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+}
+
+#search {
+    border-bottom: none;
+    margin: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/*----------------- ERROR -------------------*/
+#error {
+    background: #fff;
+}
+
+.container-error {
+    max-height: 75vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.container-error img{
+    -o-object-fit: contain;
+       object-fit: contain;
+    max-width: 100vw;
+    max-height: 70vh;
+}
+
+.btn-back {
+    width: 280px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 3px;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.btn-back p {
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.btn-back span {
+    font-weight: 600;
+}
+
+.error-text {
+    text-align: center;
+}
+/*----------------- MODALS -------------------*/
+/* Create and edit modal */
+.container-modal,
+.container-modal-list,
+.container-modal-delete {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.container-modal.show-modal,
+.container-modal-list.show-modal,
+.container-modal-delete.show-modal-delete {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.modal-books,
+.modal-books-list {
+    position: relative;
+    height: auto;
+    max-height: 600px;
+    border: 10px solid #008080;
+    -webkit-box-shadow: 0 0 0 10px #fff;
+            box-shadow: 0 0 0 10px #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+@-webkit-keyframes modal {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-100px);
+                transform: translateY(-100px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-100px);
+                transform: translateY(-100px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+}
+
+.show-modal .modal-books,
+.show-modal .modal-books-list {
+    -webkit-animation: modal .5s;
+            animation: modal .5s;
+}
+
+.close-modal {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  color: #008080;
+  border: 4px solid #008080;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  font-family: sans-serif;
+}
+
+.close-modal:focus {
+    background: #fff;
+}
+
+#add-book {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 3.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.add-field-button {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+/* Delete Modal */
+.container-modal-delete {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.modal-delete {
+    position: relative;
+    height: auto;
+    width: 500px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 20px 5px;
+}
+
+.delete-buttons a {
+    width: 95px;
+    height: 40px;
+}
+
+@-webkit-keyframes modal-delete {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-100px);
+                transform: translateY(-100px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+}
+
+@keyframes modal-delete {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-100px);
+                transform: translateY(-100px)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+}
+
+.show-modal-delete .modal-delete {
+    -webkit-animation: modal-delete 0.8s;
+            animation: modal-delete 0.8s;
+}
+
+.close-modal-delete {
+    color: #008080;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 8px;
+}
+
+.close-modal-delete:focus {
+    background: #fff;
+}
+.book-cover {
+    min-height: 375px !important;
+}
+
+/*----------------- FLASHES -------------------*/
+.flashes {
+    position: relative;
+    text-align: center;
+    -webkit-transform: translateY(80px);
+        -ms-transform: translateY(80px);
+            transform: translateY(80px);
+    margin-bottom: 20px;
+    padding: 0 10px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.35);
+            box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.35);
+    z-index: 1;
+    -webkit-animation: flashes .8s;
+            animation: flashes .8s;
+}
+
+@-webkit-keyframes flashes {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(80px);
+                transform: translateY(80px);
+    }
+}
+
+@keyframes flashes {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+                transform: translateY(0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(80px);
+                transform: translateY(80px);
+    }
+}
+
+.flashes p {
+    line-height: 35px;
+    font-size: 1.4rem;
+}
+
+/*----------------- MEDIA SCREENS -------------------*/
+@media screen and (min-width: 1400px) {
+    body {
+        background: url("/static/images/books2.JPG");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .intro-img {
+        height: 500px;
+        width: 500px;
+    }
+    .book-heading img {
+        height: 500px;
+        width: 330px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .quotes {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    body {
+        background:  url("/static/images/books2.JPG");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .intro-text {
+        width: 50%;
+        max-width: 420px;
+    }
+
+    .intro-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .intro-text p {
+        font-size: 1.2rem;
+    }
+
+    .container-error {
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+
+    .container-error img{
+        max-width: 700px;
+    }
+}
+
+@media screen and (max-width: 972px) {
+    body {
+        background:  url("/static/images/books2.JPG");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    body {
+        background: -webkit-gradient(linear, left top, left bottom, from(#008080), to(#DAD1F5));
+        background: -o-linear-gradient(top, #008080 0%, #DAD1F5 100%);
+        background: linear-gradient(180deg, #008080 0%, #DAD1F5 100%);
+        height: 100vh;
+    }
+    
+    .logo-name {
+        margin-left: 40px;
+    }
+
+    .intro-text {
+        width: 90%;
+    }
+
+    .intro-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .intro-text p {
+        font-size: 1.2rem;
+    }
+
+    .general-container {
+        width: 95%;
+    }
+
+    .books,
+    .book-heading {
+        margin: 80px 5px 0 5px;
+    }
+
+    .books,
+    .container-book-lists {
+        height: 85%;
+    }
+
+    .book {
+        height: 220px;
+    }
+
+    .book img {
+        height: 165px;
+        width: 120px;
+    }
+
+    .book p {
+        max-width: 120px;
+    }
+
+    .book-summary {
+        margin-top: 10px;
+    }
+
+    .container-book-lists h1 {
+        font-size: 2.5rem;
+    }
+
+    .books-list img {
+        height: 390px;
+        width: 280px;
+    }
+
+    .books-list p {
+        max-width: 280px;
+    }
+
+    .list-title a {
+        margin-right: 10px;
+    }
+
+    .buy-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+
+    .buy-btn {
+        min-width: 100px;
+        margin: 0;
+    }
+
+    .buy-btn:nth-child(2) {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    .welcome-user h2 {
+        font-size: 2.5rem;
+        margin-top: 0;
+    }
+
+    .container-error img{
+        max-width: 300px;
+    }
+
+    .error-text {
+        font-size: 2.4rem;
+    }
+}
+
+@media screen and (max-height: 415px) {
+    .general-container {
+        height: 75%;
+    }
+
+    .modal-books {
+        max-height: 75%;
+    }
+
+}
