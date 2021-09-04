@@ -177,7 +177,12 @@ Added the missing curly brace.
 
 ### Credits
 * Media
+
+The backfround picture for the project was taken by myself.
+
 * Code
+
+Code from ![Github](https://github.com/Henriqueperoni/CI-MS3-Books-World) was used for parts the CSS, JavaScript and HTML.
 
 ### Acknowledgments
 
