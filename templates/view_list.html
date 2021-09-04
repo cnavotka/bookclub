@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Code of most of the file from https://github.com/Henriqueperoni/CI-MS3-Books-World-->
+    <div id="modal-review" class="container-modal row">
+        <div class="modal-books white col s10 offset-s1 m6 offset-m3 xl4 offset-xl4">
+            <form class="row" method="POST" action="{{ url_for('add_book_in_list', list_name=list._id) }}">
+    
+                <!-- Book Name-->
+                <div class="input-field col s12">
+                    <label for="book_name">Book:</label>
+                    <input id="book_name" name="book_name" type="text" class="validate" minlength="3" maxlength="50" required>
+                </div>
+    
+                <!-- Book Author -->
+                <div class="input-field col s12">
+                    <label for="book_writer">Writer:</label>
+                    <input id="book_writer" name="book_writer" type="text" class="validate" minlength="3" maxlength="50"  required>
+                </div>
+
+                    <!-- Image URL -->
+                <div class="input-field col s12">
+                    <label for="img_url">Image URL:</label>
+                    <input id="img_url" name="img_url" type="text" class="validate" minlength="5" maxlength="100"  required>
+                </div>
+
+                <!-- Vendor URL -->
+                <div class="container-inputs s12">
+                    <div class="input-field col s12 add-vendor">
+                        <label for="vendor_url">Vendor URL:</label>
+                        <input id="vendor_url" name="vendor_url" type="text" class="validate" minlength="5" maxlength="100" required>
+                    </div>
+                </div>
+
+                <!-- Add field button-->
+                <a class="btn green darken-3 white-text add-field-button">Add Vendor</a>
+
+                <!-- Submit Button -->
+                <div class="row">
+                    <button type="submit" class="btn-sign-up white-text teal">Save  <i class="fas fa-save white-text"></i></button>
+                </div>
+            </form>
+            <!-- Close Modal -->
+            <button class="close-modal">x</button>
+        </div>
+    </div>
+
+    <div id="modal-edit-list" class="container-modal-list row">
+        <div class="modal-books-list white col s10 offset-s1 m8 offset-m2 xl4 offset-xl4">
+            <div class="container-form col s12">
+                <form class="row" method="POST" action="{{ url_for('edit_list', list_id=list._id) }}">
+        
+                    <!-- List Name-->
+                    <div class="input-field col s12">
+                        <label for="list_name">List Name:</label>
+                        <input id="list_name" name="list_name" type="text" class="validate" minlength="3" maxlength="50" value="{{ list.list_name }}" required>
+                    </div>
+                    
+                    <!-- Share -->
+                    <div class="row">
+                        <div class="switch col s12">
+                            <label for="share_list">
+                                {% if list.share_list == "on" %}
+                                    <input type="checkbox" id="share_list" name="share_list" checked>
+                                {% else %}
+                                    <input type="checkbox" id="share_list" name="share_list">
+                                {% endif %}
+                                <span class="lever"></span>
+                                Share
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="row">
+                        <button type="submit" class="btn-sign-up white-text teal">Save  <i class="fas fa-save white-text"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- Close Modal -->
+            <button class="close-modal">x</button>
+        </div>
+    </div>
+
+    <!-- Modal Delete Book -->
+    <div id="modal-delete" class="container-modal-delete row">
+        <div class="modal-delete white ">
+            <h3>Delete List</h3>
+            <p>Are you sure you want the full list?</p>
+            <div class="delete-buttons">
+                <a id="cancel-delete" class="grey darken-1 white-text">Cancel</a>
+                <a class="red darken-2 white-text" href="{{ url_for('delete_list', list_id=list._id) }}">Delete <i class="fas fa-trash-alt white-text"></i></a>
+            </div>
+            <!-- Close Modal -->
+            <button class="close-modal-delete">x</button>
+        </div>
+    </div>
+        
+	<div class="general-container row">
+        {% if session.user|lower == list.created_by|lower %}
+            <button id="add-book"><i class="fas fa-plus-circle teal-text"></i></button>
+        {% endif %}
+        
+        <div class="container-logos">
+            <a href="{{ url_for('home') }}"><h3 class="teal-text logo">Book<span class="Teal-text">Club</span></h3></a>
+        </div>
+            
+        <div class="container-book-lists row">
+            
+            <div class="col s12 center-align teal-text">
+                <h1>{{ list.list_name }}</h1>
+                <!-- The user who created the list does not need to see their name, because they know who created it  -->
+                {% if session.user|lower != list.created_by|lower %}
+                    <h3>by: {{ list.created_by.capitalize() }}</h3>
+                {% endif %}
+            </div>
+            {% if book_list|length > 0 %}
+                <div class="row books-list center-align">
+                    
+                    {% for book in book_list %}
+                    <div class="book-cover col s12 m6 l4 xl3">
+                        <a href="{{ url_for('book_info',list_name=list._id, book_name=book._id) }}"><img src="{{ book.img_url }}" alt="{{ book.book_name }}'s cover"></a>
+                        <div class="book-title">
+                            <p>{{ book.book_name }}</p>
+                            <p>{{ book.book_writer }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {% if session.user|lower == list.created_by|lower %}
+                <!-- Message welcoming new users -->
+                <div class="welcome-user black-text">
+                    <h2>Well done, {{ username.capitalize() }}!</h2>
+                    <p>Now you have created your list, you can start to adding books into it.</p>
+                </div>
+                {% else %}
+                <div class="welcome-user red-text">
+                    <h4>Unfortunately, {{ list.created_by.capitalize() }} hasn't added any book to the list yet.</h4>
+                </div>
+                {% endif %}
+            {% endif %}
+
+            <!-- Buttons -->
+            <div class="row">
+                <div class="edit-buttons col s12">
+                    <!-- This if statement was created to allow only the user who created the list be able to edit or delete it -->
+                    {% if session.user|lower == list.created_by|lower %}
+                        <a class="green darken-3 white-text" href="{{ url_for('best_books', username=session['user']) }}">
+                            Done <i class="fas fa-check white-text"></i>
+                        </a>
+                        <a id="edit-list" class="blue darken-3 white-text">Edit <i class="fas fa-edit white-text"></i></a>
+                        <a id="delete-book" class="red darken-2 white-text">Delete <i class="fas fa-trash-alt white-text"></i></a>
+                    {% else %}
+                        <a class="green darken-3 white-text" href="{{ url_for('discover') }}">
+                            Done <i class="fas fa-check white-text"></i>
+                        </a>
+                    {% endif %} 
+                </div>
+            </div>
+        </div>
+	</div>
+{% endblock %}
