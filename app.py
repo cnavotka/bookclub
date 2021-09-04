@@ -112,6 +112,21 @@ def logout():
     return redirect(url_for("home"))
 
 
+# Add a new into database
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
+    if request.method == "POST":
+        book = {
+            "book_name": request.form.get("book_name"),
+            "book_author": request.form.get("book_author"),
+            "img_url": request.form.get("img_url"),
+            "book_review": request.form.get("book_review"),
+            "created_by": session["user"]
+        }
+        mongo.db.books.insert_one(book)
+        return redirect("/profile/<username>")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
