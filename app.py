@@ -262,6 +262,54 @@ def book_info(list_name, book_name):
     return render_template("book_info.html", book=book, list=book_list)
 
 
+# Edit book from a booklist
+@app.route("/edit_book_in_list/<list_name>/<book_id>", methods=["GET", "POST"])
+def edit_book_in_list(list_name, book_id):
+    if request.method == "POST":
+        edited_book = {
+            "book_name": request.form.get("book_name"),
+            "book_writer": request.form.get("book_writer"),
+            "img_url": request.form.get("img_url"),
+            "vendor_url": request.form.getlist("vendor_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.books_in_list.update({"_id": ObjectId(book_id)}, edited_book)
+
+    book = mongo.db.books_in_list.find_one({"_id": ObjectId(book_id)})
+    book_list = mongo.db.book_lists.find_one({"_id": ObjectId(list_name)})
+    return render_template("book_info.html", book=book, list=book_list)
+
+
+# Delete book from a booklist
+@app.route("/delete_book_in_list/<list_name>/<book_id>")
+def delete_book_in_list(list_name, book_id):
+    book_list = mongo.db.book_lists.find_one({"_id": ObjectId(list_name)})
+    """
+    Delete ObjectID from a book in the 'books' field
+    from a specific list of books
+    """
+    mongo.db.books_in_list.remove({"_id": ObjectId(book_id)})
+    mongo.db.book_lists.update(
+            {'_id': ObjectId(
+                list_name)}, {'$pull': {'books': ObjectId(book_id)}})
+    return redirect(url_for("view_list", list_name=book_list["_id"]))
+
+
+# Render Discover page
+@app.route("/discover")
+def discover():
+    book_lists = list(mongo.db.book_lists.find())
+    return render_template("discover.html", book_lists=book_lists)
+
+
+# Search function
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    book_lists = list(mongo.db.book_lists.find({"$text": {"$search": query}}))
+    return render_template("discover.html", book_lists=book_lists)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
