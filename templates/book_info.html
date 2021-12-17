@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="general-container row">
+        <div class="container-logos">
+            <a href="{{ url_for('home') }}"><h3 class="teal-text logo">Book<span class="teal-text">Club</span></h3></a>
+        </div>
+
+        <div class="book-heading row">
+            <div class="col s12 l5">
+                <img src="{{ book.img_url }}" alt="{{ book.book_name }}'s cover">
+            </div>
+            <div class="book-summary col s12 l7">
+                <div>
+                    <h1>{{ book.book_name }}</h1> 
+                    <h3>{{ book.book_author }}</h3>
+                    {% if book.vendor_url is iterable and book.vendor_url is not string %}
+                        <div class="buy-container">
+                            {% for vendor in book.vendor_url %}
+                                <a class="btn white-text deep-purple buy-btn" href="{{ vendor }}" target="_blank">Buy</a>
+                            {% endfor %} 
+                        </div>
+                    {% else %}
+                    <a class="btn white-text deep-purple buy-btn" href="{{ book.vendor_url }}" target="_blank">Buy</a>  
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="row">
+            <div class="edit-buttons col s12">
+                <a class="green darken-3 white-text" href="{{ url_for('view_list', list_name=list._id) }}">
+                    Done <i class="fas fa-check white-text"></i>
+                </a>
+                {% if session.user|lower == list.created_by|lower %}
+                    <a id="edit-book" class="blue darken-3 white-text">Edit <i class="fas fa-edit white-text"></i></a>
+                    <a id="delete-book" class="red darken-2 white-text">Delete <i class="fas fa-trash-alt white-text"></i></a>
+                {% endif %}
+            </div>
+        </div>
+	</div>
+
+    <!-- Modal - Edit Book -->
+    <div id="modal-review" class="container-modal row">
+        <div class="modal-books white col s10 offset-s1 m6 offset-m3 xl4 offset-xl4">
+            <form class="row" method="POST" action="{{ url_for('edit_book_in_list', list_name=list._id, book_id=book._id) }}">
+    
+                <!-- Book Name-->
+                <div class="row input-field col s12">
+                    <label for="book_name">Book:</label>
+                    <input id="book_name" name="book_name" type="text" class="validate" minlength="3" maxlength="50" value="{{ book.book_name }}" required>
+                </div>
+    
+                <!-- Book Author -->
+                <div class="row input-field col s12">
+                    <label for="book_writer">Author:</label>
+                    <input id="book_writer" name="book_writer" type="text" class="validate" minlength="3" maxlength="50" value="{{ book.book_writer }}" required>
+                </div>
+
+                    <!-- Image URL -->
+                <div class="row input-field col s12">
+                    <label for="img_url">Insert image URL</label>
+                    <input id="img_url" name="img_url" type="text" class="validate" minlength="5" maxlength="100" value="{{ book.img_url }}" required>
+                </div>
+
+                <!-- Vendor URL -->
+                <div class="container-inputs s12">
+                    {% if book.vendor_url is iterable and book.vendor_url is not string %}
+                    {% for index in range(book.vendor_url|length) %}
+                    <div class="input-field col s12 add-vendor">
+                        <label for="vendor_url">Vendor URL:</label>
+                        <input id="vendor_url" name="vendor_url" type="text" class="validate" minlength="5" maxlength="100" value="{{ book.vendor_url[index] }}"  required>
+                        <a href="#" class="remove_field btn-small red darken-2">Remove</a>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="input-field col s12 add-vendor">
+                        <label for="vendor_url">Vendor URL:</label>
+                        <input id="vendor_url" name="vendor_url" type="text" class="validate" minlength="5" maxlength="100" value="{{ book.vendor_url }}"  required>
+                        <a href="#" class="remove_field btn-small red darken-2">Remove</a>
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- Add field button-->
+                <a class="btn green darken-3 white-text add-field-button">Add Vendor</a>
+
+                <!-- Submit Button -->
+                <div class="row">
+                    <button type="submit" class="btn-sign-up white-text deep-purple">Save  <i class="fas fa-save white-text"></i></button>
+                </div>
+            </form>
+            <!-- Close Modal -->
+            <button class="close-modal">x</button>
+        </div>
+    </div>
+
+    <!-- Modal - Delete Book -->
+    <div id="modal-delete" class="container-modal-delete row">
+        <div class="modal-delete white ">
+            <h3>Delete Book</h3>
+            <p>Are you sure you want to delete the book?</p>
+            <div class="delete-buttons">
+                <a id="cancel-delete" class="grey darken-1 white-text">Cancel</a>
+                <a class="red darken-2 white-text" href="{{ url_for('delete_book_in_list', list_name=list._id, book_id=book._id) }}">Delete <i class="fas fa-trash-alt white-text"></i></a>
+            </div>
+            <!-- Close Modal -->
+            <button class="close-modal-delete">x</button>
+        </div>
+    </div>
+{% endblock %}
