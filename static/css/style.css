@@ -992,9 +992,9 @@ footer {
 
 @media screen and (max-width: 576px) {
     body {
-        background: -webkit-gradient(linear, left top, left bottom, from(#008080), to(#DAD1F5));
-        background: -o-linear-gradient(top, #008080 0%, #DAD1F5 100%);
-        background: linear-gradient(180deg, #008080 0%, #DAD1F5 100%);
+        background: -webkit-gradient(linear, left top, left bottom, from(#19181a), to(#363538));
+        background: -o-linear-gradient(top, #19181a 0%, #363538 100%);
+        background: linear-gradient(180deg, #19181a 0%, #363538 100%);
         height: 100vh;
     }
     
