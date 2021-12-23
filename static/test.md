@@ -13,6 +13,8 @@ Here you can see the screenshots:
 ![JSHint](https://github.com/cnavotka/bookclub/blob/main/static/images/jshint-validator.png)
 ![PEP8](https://github.com/cnavotka/bookclub/blob/main/static/images/pep8-validator.png)
 
+All the tests were repeated before the resubmission with positive results.
+
 ### User Stories
 
 1. As a user, I want to easily understand the main purpose of the site and learn more about the organisation.
