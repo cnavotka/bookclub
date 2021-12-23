@@ -8,7 +8,7 @@ https://bookclub-manager.herokuapp.com/
 
 ![Heroku](https://bookclub-manager.herokuapp.com/)
 
-![Responsive Image](https://github.com/cnavotka/bookclub/blob/main/static/images/responsive.png)
+![Responsive Image](https://github.com/cnavotka/bookclub/blob/main/static/images/responsiveimage2.png)
 
 
 ## Project Resubmission
