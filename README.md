@@ -221,6 +221,7 @@ Added favicon to fix it.
 * Media
 
 The backfround picture for the project was taken by myself.
+The favicon was designed by Saoirse Mc Dermott ![Link to Society6](https://society6.com/saoirsesushi)
 
 * Code
 
