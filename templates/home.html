@@ -2,14 +2,19 @@
 {% block content %}
 
     <!-- Intro -->
-    <div class="intro-text teal-text">
-	    <h2>The virtual meeting place for book lovers</h2>
-        <p>
-            <span>Book <span class="teal-text">Club</span></span> Virtual book clubs are flourishing as they adapt to our increasingly rich online lives.  We host interactive author talks, online meetings, chat groups, and ongoing discussions over books.
-        </p>
-        {% if not user %}
-            <a class="sign-up teal-text" href="{{ url_for('sign_up') }}">Sign Up</a>
-        {% endif %}
-    </div>
+    <div class="row">
+        <div class="col s12 m6 l6">
+          <div class="card blue-grey darken-4">
+            <div class="card-content white-text">
+              <span class="card-title">The virtual meeting place for book lovers</span>
+              <p>Virtual book clubs are flourishing as they adapt to our increasingly rich online lives.  We host interactive author talks, online meetings, chat groups, and ongoing discussions over books.</p>
+            </div>
+            <div class="card-action">
+              <a class="sign-up teal-text" href="{{ url_for('sign_up') }}">Sign Up</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
 
 {% endblock %}
