@@ -16,11 +16,11 @@
                     {% if book.vendor_url is iterable and book.vendor_url is not string %}
                         <div class="buy-container">
                             {% for vendor in book.vendor_url %}
-                                <a class="btn white-text deep-purple buy-btn" href="{{ vendor }}" target="_blank">Buy</a>
+                                <a class="btn white-text teal buy-btn" href="{{ vendor }}" target="_blank">Buy</a>
                             {% endfor %} 
                         </div>
                     {% else %}
-                    <a class="btn white-text deep-purple buy-btn" href="{{ book.vendor_url }}" target="_blank">Buy</a>  
+                    <a class="btn white-text teal buy-btn" href="{{ book.vendor_url }}" target="_blank">Buy</a>  
                     {% endif %}
                 </div>
             </div>
