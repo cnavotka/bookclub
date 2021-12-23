@@ -181,6 +181,12 @@ Fixed the {% enblock %} and save it.
 
 Added the missing curly brace.
 
+* Getting a 404 error in the console when ispect it, due to a lack of favicon:
+
+![Favicon Error](https://github.com/cnavotka/bookclub/blob/main/static/images/console-404.png)
+
+Added favicon to fix it.
+
 ### Deployment
 
 #### Project creation
