@@ -11,30 +11,6 @@ https://bookclub-manager.herokuapp.com/
 ![Responsive Image](https://github.com/cnavotka/bookclub/blob/main/static/images/responsiveimage2.png)
 
 
-## Project Resubmission
-### Assesment Feedback
-
-I receive this feedback from the first submission, and the failing points are:
-
-* LO1 Website fails to meet expectations due to internal server errors.
-
-![Assessment Error](https://github.com/cnavotka/bookclub/blob/main/static/images/assessment-ms3.png)
-![Assessment Error2](https://github.com/cnavotka/bookclub/blob/main/static/images/assesment2-ms3.png)
-
-The internal error message:
-![Internal Error](https://github.com/cnavotka/bookclub/blob/main/static/images/500-internal-error-array.png)
-
-This issue was fixed restoring a book_info.html that was deleted by mistake during the project. 
-
-About the difficulty to read the text in the Home page, I fixed it changing the gradient backgound colour in small screens.
-Previous background:
-
-![Previous Background](https://github.com/cnavotka/bookclub/blob/main/static/images/previous-background.png)
-
-Current background:
-
-![Current Background](https://github.com/cnavotka/bookclub/blob/main/static/images/background-fixed.png)
-
 
 ## Table of Contents
 
