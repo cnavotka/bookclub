@@ -53,25 +53,33 @@ TEST: When the user adds a new book to a list, there is an input field where the
 
 * Checked if all links in the navigation bar and check if they redirect to the desired pages.
 * Checked if the social links on the footer redirect to the desired page.
+
 * Home Page:
 Checked if the Sign-Up button redirects to the Sign Up page.
+
 * Sign Up/Login Pages:
 Checked if the Sign-Up and Log in anchor redirect to the desired pages.
+
 * Profile Page:
 Checked if Add Book Button display the Add Book modal when clicked.
 Checked if by clicking and cover of the book reviews redirect to the desired page.
+
 * View Book Page:
 Checked if the Done, Edit and Delete button work properly.
+
 * Best Books Page:
 Checked if the Add List Button displays the Add List modal when clicked.
 Checked if the See Books button redirects to the desired page:
 Checked if by clicking in the list name the user is redirected to the same page if the user clicked in the See Books button.
+
 * View List Page:
 Checked if the Done, Edit and Delete button work properly.
 Checked if the user is redirected to the correct page when clicking and a book cover.
+
 * Book Info Page:
 Checked if the Done, Edit and Delete button work properly.
 Checked if the buy buttons redirect to the desired pages.
+
 * Discover Page:
 Checked if the See Books button redirects to the desired page:
 Checked if by clicking in the list name the user is redirected to the same page if the user clicked in the See Books button.
